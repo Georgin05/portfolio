@@ -4,96 +4,94 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Georgin Thomas | Portfolio</title>
+    <title>Georgin Thomas | Cinematic Profile</title>
     <link rel="stylesheet" href="css/style.css">
-    <!-- Google Fonts -->
+    <!-- Google Fonts: Cinzel & Cormorant Garamond -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Courier+Prime:wght@400;700&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&display=swap"
+        rel="stylesheet">
 </head>
 
 <body>
     <canvas id="matrix-canvas"></canvas>
 
-    <div class="container">
-        <header>
-            <h1 class="glitch-effect">Georgin Thomas</h1>
-            <p class="text-dim">Full Stack Developer</p>
+    <div class="cinematic-container">
+        <!-- HEADER / TOP NAV -->
+        <header class="top-bar">
+            <div class="logo">GT</div>
+            <nav class="top-nav">
+                <a href="#" onclick="showSection('about')">Home</a>
+                <a href="#" onclick="showSection('projects')">Quests</a>
+                <a href="#" onclick="showSection('contact')">Raven</a>
+            </nav>
+            <div class="search-bar">
+                <span class="status-indicator">STATUS: UNEMPLOYED</span>
+            </div>
         </header>
 
-        <nav
-            style="text-align: center; margin-bottom: 40px; border-bottom: 1px solid var(--color-primary-dim); padding-bottom: 20px;">
-            <a href="#about">[ About ]</a> &nbsp;
-            <a href="#projects">[ Projects ]</a> &nbsp;
-            <a href="#experience">[ Experience ]</a> &nbsp;
-            <a href="#contact">[ Contact ]</a>
-        </nav>
+        <!-- MAIN HERO CONTENT -->
+        <div class="hero-content">
+            <!-- LEFT: TEXT INFO -->
+            <div class="hero-text">
+                <div class="rank-display">
+                    <span class="rank-s">S</span> <span class="rank-label">RANK</span>
+                </div>
 
-        <section id="hero"
-            style="text-align: center; height: 60vh; display: flex; flex-direction: column; justify-content: center; align-items: center;">
-            <h1 class="glitch-effect" style="font-size: 3.5rem; margin-bottom: 10px;">GEORGIN THOMAS</h1>
-            <p class="typewriter text-primary"
-                style="font-size: 1.5rem; min-height: 1.6em; color: var(--color-primary);">Initializing...</p>
-        </section>
+                <p class="subtitle">SHADOW MONARCH / FULL STACK DEV</p>
+                <h1 class="hero-name">GEORGIN<br>THOMAS</h1>
 
-        <section id="about">
-            <h2>01. About Me</h2>
-            <p>
-                Hello. I am Georgin Thomas, a software developer with a passion for building secure, efficient, and
-                visually
-                stunning applications.
-                I specialize in web development and bringing creative ideas to life.
-            </p>
-        </section>
-
-        <section id="projects">
-            <h2>02. Projects</h2>
-            <div id="project-list">
-                <!-- Project items will go here -->
-                <p class="text-dim">Loading modules...</p>
-            </div>
-        </section>
-
-        <section id="experience">
-            <h2>03. Experience</h2>
-
-            <div class="experience-item">
-                <span class="experience-date">[ 2024 - Present ]</span>
-                <h3>Senior Developer</h3>
-                <p>Leading development of scalable web applications. Optimizing performance and user experience.</p>
+                <div id="dynamic-info" class="description-area fade-in">
+                    <!-- Default Content (About) -->
+                    <p class="intro-p">
+                        I am a passionate and results-driven individual focused on the intersection of
+                        <strong>Full-Stack Development</strong> and <strong>Artificial Intelligence</strong>.
+                    </p>
+                    <p class="intro-p">
+                        Actively mastering the <strong>MERN stack</strong> (MongoDB, Express.js, React, Node.js) to
+                        build scalable web applications.
+                    </p>
+                    <div class="mini-stats">
+                        <span><strong>MERN</strong>: MASTERED</span>
+                        <span><strong>DSA</strong>: 180+ SOLVED</span>
+                    </div>
+                </div>
             </div>
 
-            <div class="experience-item">
-                <span class="experience-date">[ 2021 - 2024 ]</span>
-                <h3>Software Engineer</h3>
-                <p>Developed full-stack solutions and collaborated with cross-functional teams to deliver high-quality
-                    software.</p>
+            <!-- CENTER/RIGHT: CHARACTER IMAGE -->
+            <div class="character-wrapper">
+                <img src="assets/knight.png" alt="Shadow Monarch Character" class="character-image">
             </div>
 
-            <div class="experience-item">
-                <span class="experience-date">[ 2018 - 2021 ]</span>
-                <h3>Junior Developer</h3>
-                <p>Assisted in frontend development and maintenance of legacy systems.
-                </p>
+            <!-- RIGHT: VERTICAL MENU -->
+            <div class="side-nav">
+                <div class="nav-header">
+                    <span class="bullet">•</span> ABOUT
+                </div>
+                <ul class="nav-links">
+                    <li class="active" onclick="showSection('about')">AFFILIATION</li>
+                    <li onclick="showSection('stats')">STATUS</li>
+                    <li onclick="showSection('projects')">QUESTS</li>
+                    <li onclick="showSection('skills')">SKILLS</li>
+                    <li onclick="showSection('contact')">WEAPONS & EQS (CONTACT)</li>
+                </ul>
             </div>
-        </section>
-
-        <section id="contact" style="text-align: center; margin-top: 100px;">
-            <h2>04. Get In Touch</h2>
-            <p>Interested in working together? Let's connect.</p>
-            <br>
-            <a href="mailto:email@example.com"
-                style="border: 1px solid var(--color-primary); padding: 10px 20px; display: inline-block;">
-                Send Message
-            </a>
-        </section>
-
-        <footer style="text-align: center; padding: 40px 0; font-size: 0.8rem; color: #555;">
-            <p>Georgin Thomas &copy; 2024</p>
-        </footer>
+        </div>
     </div>
 
-    <script src="js/matrix.js"></script>
+
+    <!-- CONFIRMATION POPUP -->
+    <div id="confirmation-popup" class="popup-overlay">
+        <div class="popup-content">
+            <h3>Raven Dispatched!</h3>
+            <p>Your message has been sent to the Shadow Monarch.</p>
+            <button class="btn-primary" onclick="closePopup()">Close</button>
+        </div>
+    </div>
+
+    <script src="js/embers.js"></script>
+
     <script src="js/script.js"></script>
 </body>
 

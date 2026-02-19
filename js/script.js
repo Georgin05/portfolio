@@ -1,96 +1,122 @@
-// Main script file
-console.log('System online...');
+// System Interface Logic
 
-// Typewriter Effect
-const texts = [
-    "Hello, I am Georgin.",
-    "I build things for the web.",
-    "Welcome to my portfolio.",
-    "Let's create something."
-];
+console.log('System Profile Loaded: Georgin Thomas (S-Rank)');
 
-let count = 0;
-let index = 0;
-let currentText = "";
-let letter = "";
+function showSection(sectionId) {
+    const displayArea = document.getElementById('dynamic-info');
+    const navLinks = document.querySelectorAll('.nav-links li');
 
-(function type() {
-    if (count === texts.length) {
-        count = 0;
-    }
-    currentText = texts[count];
-    letter = currentText.slice(0, ++index);
+    // Update Active Nav State
+    navLinks.forEach(item => {
+        item.classList.remove('active');
+        // Simple check to match onclick, ideally use identifiers
+        if (item.getAttribute('onclick').includes(sectionId)) {
+            item.classList.add('active');
+        }
+    });
 
-    const typewriterElement = document.querySelector('.typewriter');
-    if (typewriterElement) {
-        typewriterElement.textContent = letter;
-    }
+    displayArea.innerHTML = '';
+    displayArea.classList.remove('fade-in');
+    void displayArea.offsetWidth; // Trigger reflow
+    displayArea.classList.add('fade-in');
 
-    if (letter.length === currentText.length) {
-        count++;
-        index = 0;
-        setTimeout(type, 2000); // Wait before next phrase
-    } else {
-        setTimeout(type, 100); // Typing speed
-    }
-}());
-
-// Projects Data
-const projects = [
-    {
-        title: "Neural Network Viz",
-        description: "Visualizing deep learning pathways in real-time using WebGL.",
-        tech: ["Three.js", "Python", "TensorFlow"],
-        link: "#"
-    },
-    {
-        title: "Crypto Sentinel",
-        description: "Automated trading bot with sentiment analysis algorithms.",
-        tech: ["Node.js", "MongoDB", "Express"],
-        link: "#"
-    },
-    {
-        title: "Cyberpunk UI Kit",
-        description: "A reusable component library for futuristic web interfaces.",
-        tech: ["React", "Storybook", "CSS Modules"],
-        link: "#"
-    },
-    {
-        title: "Holonet Chat",
-        description: "End-to-end encrypted messaging platform for the resistance.",
-        tech: ["Socket.io", "Redis", "Docker"],
-        link: "#"
-    }
-];
-
-// Render Projects
-const projectContainer = document.getElementById('project-list');
-if (projectContainer) {
-    projectContainer.innerHTML = '';
-    projects.forEach(project => {
-        const card = document.createElement('div');
-        card.className = 'project-card';
-        card.innerHTML = `
-            <h3>${project.title}</h3>
-            <p>${project.description}</p>
-            <div class="project-tech">
-                ${project.tech.map(t => `<span class="tech-tag">${t}</span>`).join('')}
+    if (sectionId === 'about') {
+        displayArea.innerHTML = `
+            <p class="intro-p">
+                I am a passionate and results-driven individual focused on the intersection of <strong>Full-Stack Development</strong> and <strong>Artificial Intelligence</strong>.
+            </p>
+            <p class="intro-p">
+                Actively mastering the <strong>MERN stack</strong> (MongoDB, Express.js, React, Node.js) to build scalable web applications.
+            </p>
+            <div class="mini-stats">
+                <span><strong>MERN</strong>: Mastered</span>
+                <span><strong>DSA</strong>: 100+ Solved</span>
             </div>
         `;
-        projectContainer.appendChild(card);
+    }
+    else if (sectionId === 'projects') {
+        displayArea.innerHTML = `
+            <h3>Active Quests</h3>
+            <div style="font-size: 1rem; margin-top: 10px;">
+                <div style="margin-bottom: 15px; border-bottom: 1px solid rgba(139,0,0,0.3); padding-bottom: 5px;">
+                    <strong style="color:white;">Warehouse Mgmt System</strong> 
+                    <span style="float:right; color:green; font-size: 0.8rem;">[COMPLETED]</span>
+                </div>
+                <div style="margin-bottom: 15px; border-bottom: 1px solid rgba(139,0,0,0.3); padding-bottom: 5px;">
+                    <strong style="color:white;">LunarLogic</strong> 
+                    <span style="float:right; color:green; font-size: 0.8rem;">[COMPLETED]</span>
+                </div>
+                <div>
+                     <strong style="color:white;">HealthLens</strong> 
+                     <span style="float:right; color:orange; font-size: 0.8rem;">[IN PROGRESS]</span>
+                </div>
+            </div>
+        `;
+    }
+    else if (sectionId === 'contact') {
+        displayArea.innerHTML = `
+             <h3>Send a Raven</h3>
+             <form id="raven-form" onsubmit="handleRavenDispatch(event)" style="max-width: 400px;">
+                <input type="text" name="entry.1514560068" placeholder="Your Name" required>
+                <input type="email" name="entry.510649962" placeholder="Your Email" required>
+                <textarea name="entry.344695963" placeholder="Message to the Monarch..." rows="3" required></textarea>
+                <button class="btn-primary" type="submit">DISPATCH RAVEN</button>
+             </form>
+        `;
+    }
+    else if (sectionId === 'stats') {
+
+        displayArea.innerHTML = `
+            <h3>Player Status</h3>
+            <p><strong>Job:</strong> Unemployed (Open to Work)</p>
+            <p><strong>Title:</strong> Code Forger</p>
+            <p><strong>Level:</strong> 24</p>
+            <br>
+            <p><strong>STR (MERN):</strong> 85/100</p>
+            <p><strong>INT (AI/ML):</strong> 70/100</p>
+            <p><strong>AGI (DSA):</strong> 90/100</p>
+        `;
+    }
+    else if (sectionId === 'skills') {
+        displayArea.innerHTML = `
+            <h3>Skill Tree</h3>
+            <p><strong>Languages:</strong> Java, Python, C++, JavaScript</p>
+            <p><strong>Frameworks:</strong> React, Node.js, Express, MongoDB</p>
+            <p><strong>Special:</strong> Machine Learning, Data Science</p>
+            <p><strong>Tools:</strong> Git, AWS, Docker</p>
+        `;
+    }
+}
+
+function handleRavenDispatch(event) {
+    event.preventDefault();
+
+    const form = document.getElementById('raven-form');
+    const formData = new FormData(form);
+
+    // Google Form Action URL
+    const actionUrl = "https://docs.google.com/forms/u/0/d/e/1FAIpQLSc8xTQgOopPyhRVjA5pPj1HdzjbWFiIEyr3A_TLjKNwipHENw/formResponse";
+
+    // Submit using fetch in no-cors mode
+    fetch(actionUrl, {
+        method: 'POST',
+        mode: 'no-cors',
+        body: formData
+    }).then(() => {
+        // Show success popup
+        const popup = document.getElementById('confirmation-popup');
+        popup.classList.add('show');
+
+        // Clear form
+        form.reset();
+    }).catch(err => {
+        console.error('Error dispatching raven:', err);
+        alert('The raven was intercepted! Please try again.');
     });
 }
 
-// Add smooth scrolling for anchor links
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        const targetId = this.getAttribute('href');
-        const targetElement = document.querySelector(targetId);
-        if (targetElement) {
-            targetElement.scrollIntoView({
-                behavior: 'smooth'
-            });
-        }
-    });
-});
+function closePopup() {
+    const popup = document.getElementById('confirmation-popup');
+    popup.classList.remove('show');
+}
+
